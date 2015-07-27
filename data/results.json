@@ -1,0 +1,33 @@
+{
+  "name": "Champion",
+  "children": [
+    {
+      "name": "Champion",
+      "children": [
+        {
+          "name": "Champion",
+          "children": [
+          ]
+        },
+        {
+          "name": "3rd Place",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "2nd Place",
+      "children": [
+        {
+          "name": "4th Place",
+          "children": [
+          ]
+        },
+        {
+          "name": "2nd Place",
+          "children": []
+        }
+      ]
+    }
+  ]
+}
