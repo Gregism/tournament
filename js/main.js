@@ -7,7 +7,7 @@ var chart = (function(){
     w = holder.style("width").replace("px", ""),
     h = 600;
 
-    createSvg(holder);
+    //createSvg(holder);
   })
 
   function drawBrackets(json){
@@ -16,7 +16,7 @@ var chart = (function(){
   }
 
   function createSvg(holder, brackets){
-    var cluster = d3.layout.cluster()
+    var cluster = d3.layout.tree()
       .size([h, w-100]);
 
     $('#results').find('svg').remove();
@@ -33,7 +33,6 @@ var chart = (function(){
       .projection(function(d) { return [d.y, d.x]; });
     
     if(brackets){
-      
       consumeJson(brackets);
     } else {
       d3.json('../data/results.json', function(error, root) {
@@ -44,7 +43,6 @@ var chart = (function(){
 
 
     function consumeJson(root){
-      console.log(root);
       var nodes = cluster.nodes(root),
           links = cluster.links(nodes);
 
