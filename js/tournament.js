@@ -4,12 +4,26 @@ var tourny = (function(){
 
   $(document).on('ready', function(){
     $('#add-comp').on('click', addCompetitor);
-    $('#create-bracket').on('click', createBracket);
+    $('#create-bracket').removeClass('disabled').on('click', createBracket);
     $(document).on('click', 'text', advanceCompetitor);
   });
 
   function advanceCompetitor(e){
-    console.log($(e.target).text());
+    findName($(e.target).text(), json);
+    chart.drawBrackets(json);
+  }
+
+  function findName(name, list){
+    $.each(list.children, function(i, child){
+      if (child.name == name) {
+        list.name = name;
+        return true;
+      } else if(child.name !== name && child.children){
+        findName(name, child);
+      } else {
+        return false;
+      }
+    })
   }
 
   function addCompetitor(e){
@@ -31,17 +45,18 @@ var tourny = (function(){
   }
 
   function createBracket(){
-    var json = [],
+    var arr = [],
     num = competitors.length;
 
     if (!num || num <=1) return false;
 
     for (var i = 0, len = num; i < len; i++) {
-      json.push(createParent(competitors[i]));
+      arr.push(createParent(competitors[i]));
     }
 
-    json = groupBrackets(json);
-    chart.drawBrackets( createParent("Champion", json));
+    arr = groupBrackets(arr);
+    json = createParent("Champion", arr);
+    chart.drawBrackets(json);
   }
 
   function groupBrackets(arr){
