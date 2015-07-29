@@ -11,8 +11,8 @@ var chart = (function(){
   })
 
   function drawBrackets(json){
-    
-    createSvg(d3.select('#results'), json)
+    var data = $.extend(true, {}, json);
+    createSvg(d3.select('#results'), data)
   }
 
   function createSvg(holder, brackets){

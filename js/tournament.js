@@ -5,8 +5,22 @@ var tourny = (function(){
   $(document).on('ready', function(){
     $('#add-comp').on('click', addCompetitor);
     $('#create-bracket').removeClass('disabled').on('click', createBracket);
+    $('#save-bracket').on('click', saveBracket);
+    $('#bracket-name').on('change', hasName);
     $(document).on('click', 'text', advanceCompetitor);
   });
+
+  function hasName(e){
+    if($(e.target).val() && json){
+      $('#save-bracket').removeClass('disabled');
+    } else {
+      $('#save-bracket').addClass('disabled');
+    }
+  }
+
+  function saveBracket(e){
+    file.saveBracket(json);
+  }
 
   function advanceCompetitor(e){
     var name = $(e.target).text();
@@ -58,6 +72,7 @@ var tourny = (function(){
     arr = groupBrackets(arr);
     json = createParent("Champion", arr);
     chart.drawBrackets(json);
+    $('#bracket-name').attr('disabled', false);
   }
 
   function groupBrackets(arr){
@@ -74,8 +89,8 @@ var tourny = (function(){
 
   function createParent(val, children){
     return {
-      name: val,
-      children: children || []
+      "name": val,
+      "children": children || []
     };
   }
 
