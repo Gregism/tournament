@@ -1,6 +1,6 @@
 var tourny = (function(){
   var json = {};
-  var competitors = [];
+  var competitors = ['Greg','James','Tyler', 'Oliver', 'Jpeg'];
 
   $(document).on('ready', function(){
     $('#add-comp').on('click', addCompetitor);
@@ -9,6 +9,9 @@ var tourny = (function(){
   });
 
   function advanceCompetitor(e){
+    var name = $(e.target).text();
+
+    if(name === 'bye') return false;
     findName($(e.target).text(), json);
     chart.drawBrackets(json);
   }
@@ -20,10 +23,8 @@ var tourny = (function(){
         return true;
       } else if(child.name !== name && child.children){
         findName(name, child);
-      } else {
-        return false;
       }
-    })
+    });
   }
 
   function addCompetitor(e){
