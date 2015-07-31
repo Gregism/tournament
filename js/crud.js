@@ -13,7 +13,7 @@ var crud = (function(){
     data.timestamp = Date.now();
     data.name = $('#bracket-name').val();
     data.bracket = json;
-    tournamentData.push(data);
+    tournamentData.child('brackets').push(data);
   }
 
   function loadBracket(id){

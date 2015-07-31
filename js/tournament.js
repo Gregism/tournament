@@ -3,11 +3,19 @@ var tourny = (function(){
   var competitors = ['Greg','James','Tyler', 'Oliver', 'Jpeg'];
 
   $(document).on('ready', function(){
+    $('#new-competitor').bind("enterKey",addCompetitor);
     $('#add-comp').on('click', addCompetitor);
     $('#create-bracket').removeClass('disabled').on('click', createBracket);
     $('#save-bracket').on('click', saveBracket);
+    $('#bracket-name').on('enterKey', saveBracket);
     $('#bracket-name').on('change', hasName);
     $(document).on('click', 'text', advanceCompetitor);
+    
+    $('input[type=text].form-control').keyup(function(e){
+        if(e.keyCode == 13){
+            $(this).trigger("enterKey");
+        }
+    });
   });
 
   function hasName(e){
@@ -19,7 +27,9 @@ var tourny = (function(){
   }
 
   function saveBracket(e){
-    crud.saveBracket(json);
+    if($('#bracket-name').val()){
+      crud.saveBracket(json);
+    }
   }
 
   function advanceCompetitor(e){
@@ -47,6 +57,7 @@ var tourny = (function(){
     html = '<li>' + competitor + '</li>';
 
     competitors.push(competitor);
+    users.addUser(competitor);
     $('#new-competitor').val('');
     $('#competitor-list').append(html);
     if(competitors.length > 2){
