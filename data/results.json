@@ -1,31 +1,65 @@
 {
-  "name": "Champion",
+  "name": "Winner",
   "children": [
     {
-      "name": "Champion",
+      "name": "Pool One Winner",
       "children": [
         {
-          "name": "Champion",
+          "name": "C Winner",
           "children": [
+            {
+              "name": "A Winner",
+              "children": [
+                {
+                  "name": "1",
+                  "children": [
+                  ]
+                },
+                {
+                  "name": "16",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "B Winner",
+              "children": [
+                {
+                  "name": "8",
+                  "children": [
+                  ]
+                },
+                {
+                  "name": "9",
+                  "children": []
+                }
+              ]
+            }
           ]
         },
         {
-          "name": "3rd Place",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "2nd Place",
-      "children": [
-        {
-          "name": "4th Place",
+          "name": "F Winner",
           "children": [
+            {
+              "name": "C Loser",
+              "children": [
+              ]
+            },
+            {
+              "name": "E Winner",
+              "children": [
+                {
+                  "name": "Loser A",
+                  "children": [
+                  ]
+                },
+                {
+                  "name": "Loser B",
+                  "children": []
+                }
+              ]
+            }
           ]
-        },
-        {
-          "name": "2nd Place",
-          "children": []
         }
       ]
     }

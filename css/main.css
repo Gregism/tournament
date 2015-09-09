@@ -13,3 +13,15 @@
   stroke: #ccc;
   stroke-width: 1.5px;
 }
+
+path{
+  fill: none;
+}
+
+button{
+  width: 100%;
+}
+
+.row{
+  padding-bottom: 10px;
+}

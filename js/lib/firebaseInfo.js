@@ -1,0 +1,1 @@
+var tournamentData = new Firebase('https://tournaments.firebaseio.com/');

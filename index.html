@@ -5,44 +5,267 @@
   <title></title>
   <link rel="stylesheet"  href="css/bootstrap.min.css">
   <link rel="stylesheet"  href="css/main.css">
-  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <!-- <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script> -->
 </head>
 <body>
   <div class="container" style="padding-top: 10px;">
     <div class="row">
-      <div class="col-sm-4">
-        <input id="new-competitor" type="text" class="form-control" placeholder="Competitor Name">
-      </div>
-      <div class="col-sm-6">
-        <button id="add-comp" class="btn btn-default">Add Competitor</button>
-        <button id="create-bracket" class="btn btn-default disabled">Create Bracket</button>
+      <div class="col-xs-4">
+        <button id="loader" class="btn btn-default">Load JSON</button>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2" style="border-right: 1px solid #ccc; height: 605px">
-      <ul id="competitor-list">
-      </ul>
+      <div class="col-xs-8" id="pools">
+      
+        <div class="pool container" data-pool="0">
+          <h2>Pool 1</h2>
+          <div class="row">
+            <div class="col-xs-8">
+              <button id="g1" class="btn btn-game btn-default g f-winner finalist">Pool 1 Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <button id="f1" class="btn btn-game btn-default f d-winner">D Winner</button>
+            </div>
+            <div class="col-xs-4">
+              <button id="f2" class="btn btn-game btn-default f e-winner">E Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-2">
+              <button id="D1" class="btn btn-game btn-default d a-winner">A Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="D2" class="btn btn-game btn-default d b-winner">B Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E1" class="btn btn-game btn-default e c-winner">C Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E2" class="btn btn-game btn-default e d-loser">D Loser</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-1">
+              <button id="A1" class="btn btn-game btn-default a" data-pos-1="1">1</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="A2" class="btn btn-game btn-default a" data-pos-16="16">16</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B1"  class="btn btn-game btn-default b" data-pos-8="8">8</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B2" class="btn btn-game btn-default b" data-pos-9="9">9</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C1" class="btn btn-game btn-default c a-loser">A Loser</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C2" class="btn btn-game btn-default c b-loser">B Loser</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pool container" data-pool="1">
+          <h2>Pool 2</h2>
+          <div class="row">
+            <div class="col-xs-8">
+              <button id="g1" class="btn btn-game btn-default g f-winner finalist">Pool 2 Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <button id="f1" class="btn btn-game btn-default f d-winner">D Winner</button>
+            </div>
+            <div class="col-xs-4">
+              <button id="f2" class="btn btn-game btn-default f e-winner">E Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-2">
+              <button id="D1" class="btn btn-game btn-default d a-winner">A Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="D2" class="btn btn-game btn-default d b-winner">B Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E1" class="btn btn-game btn-default e c-winner">C Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E2" class="btn btn-game btn-default e d-loser">D Loser</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-1">
+              <button id="A1" class="btn btn-game btn-default a" data-pos-2="2">2</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="A2" class="btn btn-game btn-default a" data-pos-15="15">15</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B1"  class="btn btn-game btn-default b" data-pos-7="7">7</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B2" class="btn btn-game btn-default b" data-pos-10="10">10</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C1" class="btn btn-game btn-default c a-loser">A Loser</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C2" class="btn btn-game btn-default c b-loser">B Loser</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pool container" data-pool="2">
+          <h2>Pool 3</h2>
+          <div class="row">
+            <div class="col-xs-8">
+              <button id="g1" class="btn btn-game btn-default g f-winner finalist">Pool 3 Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <button id="f1" class="btn btn-game btn-default f d-winner">D Winner</button>
+            </div>
+            <div class="col-xs-4">
+              <button id="f2" class="btn btn-game btn-default f e-winner">E Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-2">
+              <button id="D1" class="btn btn-game btn-default d a-winner">A Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="D2" class="btn btn-game btn-default d b-winner">B Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E1" class="btn btn-game btn-default e c-winner">C Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E2" class="btn btn-game btn-default e d-loser">D Loser</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-1">
+              <button id="A1" class="btn btn-game btn-default a" data-pos-3="3">3</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="A2" class="btn btn-game btn-default a" data-pos-14="14">14</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B1"  class="btn btn-game btn-default b" data-pos-6="6">6</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B2" class="btn btn-game btn-default b" data-pos-11="11">11</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C1" class="btn btn-game btn-default c a-loser">A Loser</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C2" class="btn btn-game btn-default c b-loser">B Loser</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pool container" data-pool="3">
+          <h2>Pool 4</h2>
+          <div class="row">
+            <div class="col-xs-8">
+              <button id="g1" class="btn btn-game btn-default g f-winner finalist">Pool 4 Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <button id="f1" class="btn btn-game btn-default f d-winner">D Winner</button>
+            </div>
+            <div class="col-xs-4">
+              <button id="f2" class="btn btn-game btn-default f e-winner">E Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-2">
+              <button id="D1" class="btn btn-game btn-default d a-winner">A Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="D2" class="btn btn-game btn-default d b-winner">B Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E1" class="btn btn-game btn-default e c-winner">C Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="E2" class="btn btn-game btn-default e d-loser">D Loser</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-1">
+              <button id="A1" class="btn btn-game btn-default a" data-pos-4="4">4</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="A2" class="btn btn-game btn-default a" data-pos-13="13">13</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B1"  class="btn btn-game btn-default b" data-pos-5="5">5</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="B2" class="btn btn-game btn-default b" data-pos-12="12">12</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C1" class="btn btn-game btn-default c a-loser">A Loser</button>
+            </div>
+            <div class="col-xs-1">
+              <button id="C2" class="btn btn-game btn-default c b-loser">B Loser</button>
+            </div>
+          </div>
+        </div>
+        <div class="winners container pool" data-pool="final">
+          <h2>Winners</h2>
+          <div class="row">
+            <div class="col-xs-8">
+              <button id="D1" class="btn btn-game btn-default d c-winner finalist">Supreme Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <button id="C1" class="btn btn-game btn-default c a-winner">D Winner</button>
+            </div>
+            <div class="col-xs-4">
+              <button id="C2" class="btn btn-game btn-default c b-winner">E Winner</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-2">
+              <button id="A1" class="btn btn-game btn-default a pool-1-winner">Pool 1 Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="A2" class="btn btn-game btn-default a pool-2-winner">Pool 2 Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="B1" class="btn btn-game btn-default b pool-3-winner">Pool 3 Winner</button>
+            </div>
+            <div class="col-xs-2">
+              <button id="B2" class="btn btn-game btn-default b pool-4-winner">Pool 4 Winner</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="results" class="col-sm-10 text-center">
-        <!-- SVG Goes Here -->
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <input id="bracket-name" type="text" class="form-control" placeholder="Bracket Name" disabled>
-      </div>
-      <div class="col-sm-6">
-        <button id="save-bracket" class="btn btn-default disabled">Save Bracket</button>
+      <div class="col-xs-4">
+        <h2>Players</h2>
+          <ul class="player-list">
+          </ul>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="js/firebaseInfo.js"></script>
-  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+  <!-- <script type="text/javascript" src="js/firebaseInfo.js"></script> -->
+  <script type="text/javascript" src="js/lib/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/user.js"></script>
-  <script type="text/javascript" src="js/crud.js"></script>
-  <script type="text/javascript" src="js/tournament.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script type="text/javascript" src="js/6ft/6ft.js"></script> -->
+  <script type="text/javascript" src="js/6ft/phases.js"></script>
+  <!-- <script type="text/javascript" src="js/user.js"></script>
+  <script type="text/javascript" src="js/crud.js"></script> -->
+  <script type="text/javascript" src="js/6ft/6ft_tournament.js"></script>
 </body>
 </html>
