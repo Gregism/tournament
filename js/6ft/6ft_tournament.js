@@ -8,9 +8,9 @@ var tourny = (function(){
   });
 
   function loadPools(fresh){
-    var file = '/data/pools_filled.json';
+    var file = 'data/pools_filled.json';
     if(!fresh){
-      file = '/data/pools.json';
+      file = 'data/pools.json';
     }
 
     $.getJSON(file)
@@ -71,7 +71,7 @@ var tourny = (function(){
   }
 
   function loadPlayers(){
-    $.getJSON('../../data/players.json')
+    $.getJSON('data/players.json')
       .done(function(data){
         showPlayers(data);
       });
